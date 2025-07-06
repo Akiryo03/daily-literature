@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/daily-literature/static/css/main.f3418bb6.css",
-    "main.js": "/daily-literature/static/js/main.0cc8b0c4.js",
+    "main.js": "/daily-literature/static/js/main.3b1b3800.js",
     "index.html": "/daily-literature/index.html",
     "main.f3418bb6.css.map": "/daily-literature/static/css/main.f3418bb6.css.map",
-    "main.0cc8b0c4.js.map": "/daily-literature/static/js/main.0cc8b0c4.js.map"
+    "main.3b1b3800.js.map": "/daily-literature/static/js/main.3b1b3800.js.map"
   },
   "entrypoints": [
     "static/css/main.f3418bb6.css",
-    "static/js/main.0cc8b0c4.js"
+    "static/js/main.3b1b3800.js"
   ]
 }
