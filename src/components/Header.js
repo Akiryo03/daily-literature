@@ -1,7 +1,7 @@
 import React from 'react';
-import { BookOpen, Calendar } from 'lucide-react';
+import {RefreshCw, BookOpen, Calendar } from 'lucide-react';
 
-const Header = ({ currentDate }) => {
+const Header = ({ currentDate, onRefresh }) => {
   return (
     <header className="header">
       <div className="header-title">
@@ -13,9 +13,15 @@ const Header = ({ currentDate }) => {
         <p>{currentDate}</p>
       </div>
       <p className="header-subtitle">人生を変える一文を。</p>
-      <button className='header-reflesh-btn'>
-        <span className="refresh-text">🔄新しい名文を見る</span>
-         </button>
+      <div className="refresh-section">
+            <button
+              onClick={onRefresh}
+              className="refresh-button"
+            >
+              <RefreshCw className="refresh-icon" />
+              別の名文を見る
+            </button>
+          </div>
     </header>
   );
 };

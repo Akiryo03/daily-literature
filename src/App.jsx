@@ -26,6 +26,7 @@ const DailyLiteratureApp = () => {
   const handleRefresh = () => {
     const randomIndex = Math.floor(Math.random() * literatureQuotes.length);
     setCurrentQuote(literatureQuotes[randomIndex]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // セクションの展開/折りたたみ
@@ -43,33 +44,29 @@ const DailyLiteratureApp = () => {
 
   return (
     <div className="app-container">
-      <div className="container">
-        <Header currentDate={currentDate} />
-        
-        <main className="main-content">
-          <QuoteDisplay quote={currentQuote} />
-          
-          <DetailedInfo 
-            quote={currentQuote}
-            expandedSection={expandedSection}
-            onToggleSection={toggleSection}
-          />
-
-          <div className="refresh-section">
-            <button
-              onClick={handleRefresh}
-              className="refresh-button"
-            >
-              <RefreshCw className="refresh-icon" />
-              別の名文を見る
-            </button>
-          </div>
-
-          <footer className="footer">
-            <p>古くて新しい言葉たちに親しみましょう</p>
-          </footer>
-        </main>
-      </div>
+   <div className="container">
+  <Header currentDate={currentDate} onRefresh={handleRefresh} />
+  <main className="main-content">
+    <QuoteDisplay quote={currentQuote} />
+    <DetailedInfo 
+      quote={currentQuote}
+      expandedSection={expandedSection}
+      onToggleSection={toggleSection}
+    />
+    <div className="refresh-section">
+      <button
+        onClick={handleRefresh}
+        className="refresh-button"
+      >
+        <RefreshCw className="refresh-icon" />
+        別の名文を見る
+      </button>
+    </div>
+    <footer className="footer">
+      <p>古くて新しい言葉たちに親しみましょう</p>
+    </footer>
+  </main>
+</div>
     </div>
   );
 };
