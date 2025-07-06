@@ -13,6 +13,9 @@ const Header = ({ currentDate }) => {
         <p>{currentDate}</p>
       </div>
       <p className="header-subtitle">人生を変える一文を。</p>
+      <button className='header-reflesh-btn'>
+        <span className="refresh-text">🔄新しい名文を見る</span>
+         </button>
     </header>
   );
 };
