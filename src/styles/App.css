@@ -429,3 +429,1551 @@
     font-size: 2rem;
   }
 }
+
+/* src/styles/App.css に追加 */
+
+/* お気に入りボタン */
+.favorite-section {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e11d48;
+  background: white;
+  color: #e11d48;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.favorite-button:hover:not(:disabled) {
+  background: #e11d48;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.3);
+}
+
+.favorite-button.favorited {
+  background: #e11d48;
+  color: white;
+}
+
+.favorite-button.favorited:hover {
+  background: #be185d;
+}
+
+.favorite-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.favorite-button.loading {
+  background: #f3f4f6;
+  color: #6b7280;
+  border-color: #d1d5db;
+}
+
+.heart-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: all 0.2s;
+}
+
+.heart-icon.filled {
+  animation: heartBeat 0.6s ease-in-out;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ヘッダーにお気に入りボタンを追加する場合 */
+.header-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.view-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  color: #374151;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-toggle-button:hover {
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-count {
+  background: #e11d48;
+  color: white;
+  border-radius: 1rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+/* ヘッダーコントロール */
+.header-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.view-toggle-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.view-toggle-button:hover {
+  background: white;
+  border-color: #4f46e5;
+  color: #4f46e5;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.view-toggle-button.favorites-active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: white;
+}
+
+.refresh-button-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  border: none;
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.refresh-button-header:hover {
+  background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.3);
+}
+
+.control-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.favorites-count {
+  background: #e11d48;
+  color: white;
+  border-radius: 1rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  min-width: 1.25rem;
+  text-align: center;
+  margin-left: 0.25rem;
+}
+
+/* お気に入り一覧 */
+.favorites-list {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.favorites-header {
+  margin-bottom: 2rem;
+}
+
+.favorites-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #e11d48;
+  font-size: 2rem;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.favorites-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.favorites-count-badge {
+  background: #e11d48;
+  color: white;
+  border-radius: 1rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+/* 検索とソート */
+.favorites-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: #9ca3af;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #e11d48;
+}
+
+.sort-select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #e11d48;
+}
+
+/* お気に入りグリッド */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .favorites-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* お気に入りカード */
+.favorite-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #fecaca;
+  transition: all 0.2s;
+}
+
+.favorite-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.favorite-quote {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 1rem;
+  font-family: serif;
+  position: relative;
+}
+
+.expand-text-button {
+  background: none;
+  border: none;
+  color: #e11d48;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  text-decoration: underline;
+}
+
+.expand-text-button:hover {
+  color: #be185d;
+}
+
+.favorite-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.favorite-author-info {
+  flex: 1;
+}
+
+.author-line,
+.work-line,
+.era-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.meta-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.favorite-author {
+  font-weight: 600;
+  color: #e11d48;
+}
+
+.favorite-work {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.favorite-era {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.remove-favorite-button {
+  padding: 0.5rem;
+  border: none;
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.remove-favorite-button:hover {
+  background: #fee2e2;
+  transform: scale(1.1);
+}
+
+.trash-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.favorite-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 0.75rem;
+}
+
+.date-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* 空の状態 */
+.no-favorites {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6b7280;
+}
+
+.no-favorites-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.5rem;
+  color: #d1d5db;
+}
+
+.no-favorites h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.no-favorites-illustration {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.heart-1, .heart-2, .heart-3 {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fca5a5;
+  animation: float 3s ease-in-out infinite;
+}
+
+.heart-2 {
+  animation-delay: 1s;
+}
+
+.heart-3 {
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 検索結果なし */
+.no-search-results {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6b7280;
+}
+
+.no-results-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  color: #d1d5db;
+}
+
+.clear-search-button {
+  background: #e11d48;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.clear-search-button:hover {
+  background: #be185d;
+}
+
+/* ローディング */
+.favorites-loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6b7280;
+}
+
+.loading-heart {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  color: #e11d48;
+  animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .favorites-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-box {
+    max-width: none;
+  }
+  
+  .favorites-title {
+    font-size: 1.5rem;
+  }
+  
+  .header-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* モーダルオーバーレイ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* モーダルコンテンツ */
+.modal-content {
+  background: white;
+  border-radius: 1rem;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* モーダルヘッダー */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e11d48;
+}
+
+.modal-title-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modal-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 0.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* モーダルボディ */
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* モーダル内の名文表示 */
+.modal-quote-display {
+  margin-bottom: 2rem;
+}
+
+.modal-quote-text {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #374151;
+  font-family: serif;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #fef7f7 0%, #faf5ff 100%);
+  border-radius: 1rem;
+  border-left: 4px solid #e11d48;
+}
+
+/* モーダル内の基本情報グリッド */
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .modal-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.modal-info-card {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.modal-info-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.modal-info-name {
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.modal-info-detail {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* モーダル内の解説 */
+.modal-explanation {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-explanation-title {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-explanation-text {
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* お気に入り情報 */
+.modal-favorite-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #fef7f7;
+  border-radius: 0.5rem;
+  border: 1px solid #fecaca;
+  font-size: 0.875rem;
+  color: #be185d;
+  margin-bottom: 1.5rem;
+}
+
+.favorite-info-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* モーダル内の詳細情報 */
+.modal-detailed-info {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.modal-section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* モーダルフッター */
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.modal-footer-button {
+  padding: 0.75rem 2rem;
+  background: #e11d48;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-footer-button:hover {
+  background: #be185d;
+}
+
+/* お気に入りカードのクリック可能表示 */
+.favorite-card {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.favorite-card:hover .favorite-quote {
+  color: #e11d48;
+}
+
+.favorite-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.05) 0%, rgba(190, 24, 93, 0.05) 100%);
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.favorite-card:hover::after {
+  opacity: 1;
+}
+
+/* カードクリックヒント */
+.card-click-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(225, 29, 72, 0.1);
+  color: #e11d48;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.favorite-card:hover .card-click-hint {
+  opacity: 1;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+    border-radius: 0.75rem;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-footer {
+    padding: 1rem;
+  }
+  
+  .modal-quote-text {
+    font-size: 1.25rem;
+    padding: 1rem;
+  }
+  
+  .modal-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* 削除ボタンのクリック範囲を制限 */
+.remove-favorite-button {
+  position: relative;
+  z-index: 10;
+}
+
+/* src/styles/App.css に追加 */
+
+/* モーダルオーバーレイ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* モーダルコンテンツ */
+.modal-content {
+  background: white;
+  border-radius: 1rem;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* モーダルヘッダー */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e11d48;
+}
+
+.modal-title-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modal-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 0.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* モーダルボディ */
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* モーダル内の名文表示 */
+.modal-quote-display {
+  margin-bottom: 2rem;
+}
+
+.modal-quote-text {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #374151;
+  font-family: serif;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #fef7f7 0%, #faf5ff 100%);
+  border-radius: 1rem;
+  border-left: 4px solid #e11d48;
+}
+
+/* モーダル内の基本情報グリッド */
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .modal-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.modal-info-card {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.modal-info-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.modal-info-name {
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.modal-info-detail {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* モーダル内の解説 */
+.modal-explanation {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-explanation-title {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-explanation-text {
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* お気に入り情報 */
+.modal-favorite-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #fef7f7;
+  border-radius: 0.5rem;
+  border: 1px solid #fecaca;
+  font-size: 0.875rem;
+  color: #be185d;
+  margin-bottom: 1.5rem;
+}
+
+.favorite-info-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* モーダル内の詳細情報 */
+.modal-detailed-info {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.modal-section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* モーダルフッター */
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.modal-footer-button {
+  padding: 0.75rem 2rem;
+  background: #e11d48;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-footer-button:hover {
+  background: #be185d;
+}
+
+/* 使い方のヒント */
+.usage-hint {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  margin-top: 1rem;
+}
+
+/* お気に入りカードのクリック可能表示 */
+.favorite-card {
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.favorite-card:hover .favorite-quote {
+  color: #e11d48;
+}
+
+.favorite-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.05) 0%, rgba(190, 24, 93, 0.05) 100%);
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.favorite-card:hover::after {
+  opacity: 1;
+}
+
+/* カードクリックヒント */
+.card-click-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(225, 29, 72, 0.1);
+  color: #e11d48;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.favorite-card:hover .card-click-hint {
+  opacity: 1;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+    border-radius: 0.75rem;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-footer {
+    padding: 1rem;
+  }
+  
+  .modal-quote-text {
+    font-size: 1.25rem;
+    padding: 1rem;
+  }
+  
+  .modal-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* 削除ボタンのクリック範囲を制限 */
+.remove-favorite-button {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* src/styles/App.css に追加 */
+
+/* モーダルオーバーレイ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* モーダルコンテンツ */
+.modal-content {
+  background: white;
+  border-radius: 1rem;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* モーダルヘッダー */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e11d48;
+}
+
+.modal-favorite-badge {
+  background: #e11d48;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+}
+
+.modal-title-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modal-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 0.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* モーダルボディ */
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* モーダル内の名文表示 */
+.modal-quote-display {
+  margin-bottom: 2rem;
+}
+
+.modal-quote-text {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #374151;
+  font-family: serif;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #fef7f7 0%, #faf5ff 100%);
+  border-radius: 1rem;
+  border-left: 4px solid #e11d48;
+}
+
+/* モーダル内の基本情報グリッド */
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .modal-info-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.modal-info-card {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.modal-info-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.modal-info-name {
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.modal-info-detail {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* モーダル内の解説 */
+.modal-explanation {
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-explanation-title {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-explanation-text {
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* お気に入り情報 */
+.modal-favorite-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #fef7f7;
+  border-radius: 0.5rem;
+  border: 1px solid #fecaca;
+  font-size: 0.875rem;
+  color: #be185d;
+  margin-bottom: 1.5rem;
+}
+
+.favorite-info-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* モーダル内の詳細情報 */
+.modal-detailed-info {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.modal-section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* モーダルフッター */
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.modal-footer-button {
+  padding: 0.75rem 2rem;
+  background: #e11d48;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-footer-button:hover {
+  background: #be185d;
+}
+
+/* 使い方のヒント */
+.usage-hint {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  margin-top: 1rem;
+}
+
+/* お気に入りカードのクリック可能表示 */
+.favorite-card {
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.favorite-card:hover .favorite-quote {
+  color: #e11d48;
+}
+
+.favorite-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.05) 0%, rgba(190, 24, 93, 0.05) 100%);
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.favorite-card:hover::after {
+  opacity: 1;
+}
+
+/* カードクリックヒント */
+.card-click-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(225, 29, 72, 0.1);
+  color: #e11d48;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.favorite-card:hover .card-click-hint {
+  opacity: 1;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+    border-radius: 0.75rem;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-footer {
+    padding: 1rem;
+  }
+  
+  .modal-quote-text {
+    font-size: 1.25rem;
+    padding: 1rem;
+  }
+  
+  .modal-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* 削除ボタンのクリック範囲を制限 */
+.remove-favorite-button {
+  position: relative;
+  z-index: 10;
+}
