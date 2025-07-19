@@ -1,7 +1,8 @@
+// src/components/QuoteDisplay.js
 import React from 'react';
-import { User, BookmarkIcon, ExternalLink, Lightbulb } from 'lucide-react';
+import { User, BookmarkIcon, ExternalLink, Lightbulb, Share2 } from 'lucide-react';
 
-const QuoteDisplay = ({ quote }) => {
+const QuoteDisplay = ({ quote, onShare }) => {
   return (
     <div className="quote-display">
       <blockquote className="quote-text">
@@ -46,6 +47,16 @@ const QuoteDisplay = ({ quote }) => {
         </h3>
         <p className="explanation-text">{quote.meaning}</p>
       </div>
+
+      {/* 共有ボタン */}
+      {onShare && (
+        <div className="quote-share-section">
+          <button onClick={() => onShare(quote)} className="quote-share-button">
+            <Share2 className="share-button-icon" />
+            この名文を共有
+          </button>
+        </div>
+      )}
     </div>
   );
 };

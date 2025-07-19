@@ -1,13 +1,15 @@
-// src/components/Header.js (更新版)
+// src/components/Header.js (リクエスト機能追加版)
 import React from 'react';
-import { RefreshCw, BookOpen, Calendar, Heart, Home } from 'lucide-react';
+import { RefreshCw, BookOpen, Calendar, Heart, Home, Search, Plus } from 'lucide-react';
 
 const Header = ({ 
   currentDate, 
   onRefresh, 
   onToggleView, 
   showFavorites, 
-  favoritesCount = 0 
+  favoritesCount = 0,
+  onOpenSearch,
+  onOpenRequest 
 }) => {
   return (
     <header className="header">
@@ -43,6 +45,24 @@ const Header = ({
               )}
             </>
           )}
+        </button>
+
+        {/* 検索ボタン */}
+        <button
+          onClick={onOpenSearch}
+          className="search-button"
+        >
+          <Search className="control-icon" />
+          名文を検索
+        </button>
+
+        {/* 追加リクエストボタン */}
+        <button
+          onClick={onOpenRequest}
+          className="request-button"
+        >
+          <Plus className="control-icon" />
+          名文をリクエスト
         </button>
         
         {!showFavorites && (

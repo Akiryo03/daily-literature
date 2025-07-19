@@ -1,4 +1,4 @@
-// src/App.jsx (完全版)
+// src/App.jsx (共有機能統合版)
 import React, { useState, useEffect } from 'react';
 import { RefreshCw, BookOpen, Calendar, Heart } from 'lucide-react';
 import Header from './components/Header';
@@ -6,11 +6,15 @@ import QuoteDisplay from './components/QuoteDisplay';
 import DetailedInfo from './components/DetailedInfo';
 import FavoriteButton from './components/FavoriteButton';
 import FavoritesList from './components/FavoritesList';
+import QuoteSearch from './components/QuoteSearch';
+import QuoteRequest from './components/QuoteRequest';
+import ShareQuote from './components/ShareQuote';
 import AuthError from './components/AuthError';
 import { generateLiteratureQuotes } from './data/literatureData';
 import { formatDate } from './utils/dateUtils';
 import { useAuth } from './hooks/useAuth';
 import { useFavorites } from './hooks/useFavorites';
+import { useQuoteRequest } from './hooks/useQuoteRequest';
 import './styles/App.css';
 
 const DailyLiteratureApp = () => {
@@ -18,6 +22,10 @@ const DailyLiteratureApp = () => {
   const [currentDate, setCurrentDate] = useState('');
   const [expandedSection, setExpandedSection] = useState(null);
   const [showFavorites, setShowFavorites] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [showRequest, setShowRequest] = useState(false);
+  const [showShare, setShowShare] = useState(false);
+  const [shareQuote, setShareQuote] = useState(null);
 
   const literatureQuotes = generateLiteratureQuotes();
 
@@ -30,6 +38,9 @@ const DailyLiteratureApp = () => {
     removeFromFavorites, 
     isFavorite 
   } = useFavorites(user?.uid);
+  
+  // リクエスト機能
+  const { submitRequest, loading: requestLoading } = useQuoteRequest(user?.uid);
 
   // 日付に基づいて名文を選択する関数
   const getQuoteOfTheDay = () => {
@@ -64,7 +75,59 @@ const DailyLiteratureApp = () => {
   // メインビューとお気に入りビューの切り替え
   const toggleView = () => {
     setShowFavorites(!showFavorites);
+    setShowSearch(false); // 検索画面を閉じる
+    setShowRequest(false); // リクエスト画面を閉じる
+    setShowShare(false); // 共有画面を閉じる
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // 検索画面の表示/非表示
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+    setShowRequest(false); // リクエスト画面を閉じる
+    setShowShare(false); // 共有画面を閉じる
+  };
+
+  // 検索画面を閉じる
+  const closeSearch = () => {
+    setShowSearch(false);
+  };
+
+  // リクエスト画面の表示/非表示
+  const toggleRequest = () => {
+    setShowRequest(!showRequest);
+    setShowSearch(false); // 検索画面を閉じる
+    setShowShare(false); // 共有画面を閉じる
+  };
+
+  // リクエスト画面を閉じる
+  const closeRequest = () => {
+    setShowRequest(false);
+  };
+
+  // 共有画面の表示
+  const handleShare = (quote) => {
+    setShareQuote(quote);
+    setShowShare(true);
+    setShowSearch(false); // 検索画面を閉じる
+    setShowRequest(false); // リクエスト画面を閉じる
+  };
+
+  // 共有画面を閉じる
+  const closeShare = () => {
+    setShowShare(false);
+    setShareQuote(null);
+  };
+
+  // リクエスト送信
+  const handleSubmitRequest = async (requestData) => {
+    try {
+      await submitRequest(requestData);
+      console.log('リクエスト送信完了');
+    } catch (error) {
+      console.error('リクエスト送信失敗:', error);
+      throw error;
+    }
   };
 
   useEffect(() => {
@@ -108,6 +171,8 @@ const DailyLiteratureApp = () => {
           onToggleView={toggleView}
           showFavorites={showFavorites}
           favoritesCount={favorites.length}
+          onOpenSearch={toggleSearch}
+          onOpenRequest={toggleRequest}
         />
         
         <main className="main-content">
@@ -119,7 +184,10 @@ const DailyLiteratureApp = () => {
             />
           ) : (
             <>
-              <QuoteDisplay quote={currentQuote} />
+              <QuoteDisplay 
+                quote={currentQuote}
+                onShare={handleShare}
+              />
               
               {/* お気に入りボタン */}
               <div className="favorite-section">
@@ -159,6 +227,30 @@ const DailyLiteratureApp = () => {
           </footer>
         </main>
       </div>
+
+      {/* 検索オーバーレイ */}
+      <QuoteSearch
+        quotes={literatureQuotes}
+        isVisible={showSearch}
+        onClose={closeSearch}
+        isFavorite={isFavorite}
+        onToggleFavorite={handleFavoriteToggle}
+        favoritesLoading={favoritesLoading}
+      />
+
+      {/* リクエストモーダル */}
+      <QuoteRequest
+        isOpen={showRequest}
+        onClose={closeRequest}
+        onSubmit={handleSubmitRequest}
+      />
+
+      {/* 共有モーダル */}
+      <ShareQuote
+        quote={shareQuote}
+        isOpen={showShare}
+        onClose={closeShare}
+      />
     </div>
   );
 };
