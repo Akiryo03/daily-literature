@@ -9,6 +9,7 @@ import FavoritesList from './components/FavoritesList';
 import QuoteSearch from './components/QuoteSearch';
 import QuoteRequest from './components/QuoteRequest';
 import ShareQuote from './components/ShareQuote';
+import InstallPrompt from './components/InstallPrompt';
 import AuthError from './components/AuthError';
 import { generateLiteratureQuotes } from './data/literatureData';
 import { formatDate } from './utils/dateUtils';
@@ -251,6 +252,9 @@ const DailyLiteratureApp = () => {
         isOpen={showShare}
         onClose={closeShare}
       />
+
+      {/* PWAインストールプロンプト */}
+      <InstallPrompt />
     </div>
   );
 };

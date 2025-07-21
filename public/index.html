@@ -1,15 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#4f46e5" />
+  
+  <!-- PWA用メタタグ -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="まいにち名文">
+  
+  <!-- アプリアイコン -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
+  
+  <!-- SEO メタタグ -->
+  <meta name="description" content="毎日新しい名文に出会える文学アプリ。平安時代から現代まで、心に響く言葉を厳選してお届けします。お気に入り機能、検索機能、共有機能付き。" />
+  <meta name="keywords" content="名文,文学,日本文学,名言,古典,詩歌,俳句,短歌,アプリ,PWA" />
+  <meta name="author" content="まいにち名文" />
+  
+  <!-- OGP -->
+  <meta property="og:title" content="まいにち名文 - 人生を変える一文を" />
+  <meta property="og:description" content="毎日新しい名文に出会える文学アプリ。平安時代から現代まで、心に響く言葉を厳選してお届けします。" />
+  <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+  <meta property="og:url" content="https://your-domain.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="まいにち名文" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="まいにち名文 - 人生を変える一文を" />
+  <meta name="twitter:description" content="毎日新しい名文に出会える文学アプリ" />
+  <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <title>まいにち名文 - 人生を変える一文を</title>
+</head>
+<body>
+  <noscript>このアプリを実行するにはJavaScriptを有効にしてください。</noscript>
+  <div id="root"></div>
+  
+  <!-- PWA インストール促進スクリプト -->
+  <script>
+    let deferredPrompt;
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // ブラウザのデフォルトのインストールプロンプトを防ぐ
+      e.preventDefault();
+      // 後で使用するためにイベントを保存
+      deferredPrompt = e;
+      
+      // カスタムインストールボタンを表示
+      const installButton = document.createElement('button');
+      installButton.textContent = 'ホーム画面に追加';
+      installButton.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #4f46e5;
+        color: white;
+        border: none;
+        padding: 12px 16px;
+        border-radius: 25px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        font-weight: 500;
+        cursor: pointer;
+        z-index: 1000;
+        font-size: 14px;
+      `;
+      
+      installButton.addEventListener('click', () => {
+        // インストールプロンプトを表示
+        deferredPrompt.prompt();
+        // ユーザーの応答を待つ
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('ユーザーがPWAインストールを承認');
+          } else {
+            console.log('ユーザーがPWAインストールを拒否');
+          }
+          deferredPrompt = null;
+          installButton.remove();
+        });
+      });
+      
+      document.body.appendChild(installButton);
+    });
+    
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('PWAがインストールされました');
+    });
+  </script>
+</body>
 </html>
