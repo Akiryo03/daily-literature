@@ -1,3 +1,4 @@
+// src/index.js (PWA対応版)
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

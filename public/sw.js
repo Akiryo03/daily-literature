@@ -1,5 +1,5 @@
 // public/sw.js
-const CACHE_NAME = 'mainichibun-v1';
+const CACHE_NAME = 'mainichibun-v2';
 const urlsToCache = [
   '/',
   '/static/css/main.css',
