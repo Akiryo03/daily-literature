@@ -1,4 +1,4 @@
-// src/App.jsx (共有機能統合版)
+// src/App.js の修正版（フッターコンポーネント統合）
 import React, { useState, useEffect } from 'react';
 import { RefreshCw, BookOpen, Calendar, Heart } from 'lucide-react';
 import Header from './components/Header';
@@ -11,6 +11,7 @@ import QuoteRequest from './components/QuoteRequest';
 import ShareQuote from './components/ShareQuote';
 import InstallPrompt from './components/InstallPrompt';
 import AuthError from './components/AuthError';
+import Footer from './components/Footer'; // 追加
 import { generateLiteratureQuotes } from './data/literatureData';
 import { formatDate } from './utils/dateUtils';
 import { useAuth } from './hooks/useAuth';
@@ -76,17 +77,17 @@ const DailyLiteratureApp = () => {
   // メインビューとお気に入りビューの切り替え
   const toggleView = () => {
     setShowFavorites(!showFavorites);
-    setShowSearch(false); // 検索画面を閉じる
-    setShowRequest(false); // リクエスト画面を閉じる
-    setShowShare(false); // 共有画面を閉じる
+    setShowSearch(false);
+    setShowRequest(false);
+    setShowShare(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // 検索画面の表示/非表示
   const toggleSearch = () => {
     setShowSearch(!showSearch);
-    setShowRequest(false); // リクエスト画面を閉じる
-    setShowShare(false); // 共有画面を閉じる
+    setShowRequest(false);
+    setShowShare(false);
   };
 
   // 検索画面を閉じる
@@ -97,8 +98,8 @@ const DailyLiteratureApp = () => {
   // リクエスト画面の表示/非表示
   const toggleRequest = () => {
     setShowRequest(!showRequest);
-    setShowSearch(false); // 検索画面を閉じる
-    setShowShare(false); // 共有画面を閉じる
+    setShowSearch(false);
+    setShowShare(false);
   };
 
   // リクエスト画面を閉じる
@@ -110,8 +111,8 @@ const DailyLiteratureApp = () => {
   const handleShare = (quote) => {
     setShareQuote(quote);
     setShowShare(true);
-    setShowSearch(false); // 検索画面を閉じる
-    setShowRequest(false); // リクエスト画面を閉じる
+    setShowSearch(false);
+    setShowRequest(false);
   };
 
   // 共有画面を閉じる
@@ -218,14 +219,11 @@ const DailyLiteratureApp = () => {
             </>
           )}
           
-          <footer className="footer">
-            <p>古くて新しい言葉たちに親しみましょう</p>
-            {user && !showFavorites && (
-              <p style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: '#6b7280' }}>
-                お気に入り: {favorites.length} 件
-              </p>
-            )}
-          </footer>
+          {/* フッターコンポーネントを使用 */}
+          <Footer 
+            showFavorites={showFavorites}
+            favoritesCount={favorites.length}
+          />
         </main>
       </div>
 
