@@ -1,6 +1,7 @@
 // src/components/Footer.js
 import React from 'react';
 import { Mail, Heart, BookOpen } from 'lucide-react';
+import { FooterSupport } from './BuyMeACoffee'; // 名前付きimport
 
 const Footer = ({ showFavorites, favoritesCount }) => {
   return (
@@ -30,12 +31,15 @@ const Footer = ({ showFavorites, favoritesCount }) => {
             お問い合わせはこちらまでメールをお送りください:
           </p>
           <a 
-            href="mailto:contact@mainichibun.com" 
+            href="mailto:mainichimeibun@gmail.com" 
             className="footer-email-link"
           >
-            contact@mainichibun.com
+            mainichimeibun@gmail.com
           </a>
         </div>
+
+        {/* Buy Me a Coffee サポートリンク */}
+        <FooterSupport username="mainichibun" />
 
         {/* アプリ情報 */}
         <div className="footer-app-info">
